@@ -16,9 +16,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: "application/vnd.api+json"}));
 app.use(methodOverride());
 
-app.listen(3000);
-console.log("app is listening");
-
 //RESTFUL API
 app.get("/api/todos", function(req, res) {
 
@@ -58,3 +55,12 @@ app.delete("/api/todos/:todo_id", function(req, res) {
   });
   });
 });
+
+app.get("*", function(req, res) {
+  res.sendfiLe("./public/index.html");
+});
+
+
+//SERVER
+app.listen(3000);
+console.log("app is listening");
