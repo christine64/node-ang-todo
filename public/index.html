@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ang-app">
 <head>
   <meta charset="UTF-8">
   <title>Todo in Node/Angular/Mongoose</title>
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="core.js"></script>
 </head>
-<body>
+<body ng-controller="mainController">
   
-  <h1>Todo App</h1>
+  <div class="container">
+  <h1>Todo App<span class="label label-info">{{ todos.length }}</span></h1>
 
+  <div class="checkbox" ng-repeat="todo in todos">
+    <label>
+      <input type="checkbox" ng-click="deleteTodo(todo._id">{{ todo.text }}
+    </label>
+  </div>
+
+  <div id="todo-form" class="row">
+    <form>
+      <div class="form-group">
+        <input type="text" placeholder="Need to contact Luka" ng-model="formData.text">
+      </div>
+
+        <button type="submit" ng-click="createTodo()">Add</button>
+      </form>
+    </div>
+    
 </body>
 </html>
