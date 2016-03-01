@@ -1,8 +1,8 @@
-var toDo = angular.module("ang-app", []);
+angular.module("ang-app", ["$scope", "$http"])
+  .controller("mainController", mainController);
 
-function mainController($scope, $http) {
+function mainController($scope, $http, Todos) {
   $scope.formData = {};
-}
 
   //show todos
   $http.get("/api/todos")
@@ -19,7 +19,7 @@ function mainController($scope, $http) {
     $scope.createTodo = function() {
       $http.post("/api/todos", $scope.formData)
         .success(function(data) {
-          $scope.formData {};
+          $scope.formData = {};
           $scope.todos = data;
           console.log(data);
         })
@@ -40,21 +40,4 @@ function mainController($scope, $http) {
         });
 
     };
-
-}
-//   .controller("mainController", mainController);
-
-// function mainController($rootScope, $scope) {
-//   var self = this;
-
-//   this.formData = {};
-
-//   $http.get("/api/todos")
-//     .done(function(data){
-//       this.todos = data;
-//       console.log(data);
-//     })
-//     .error(function(data) {
-//       console.log("Error " + data);
-//     })
-// }
+};
